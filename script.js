@@ -36,3 +36,10 @@ document.addEventListener('click', jump);
 
 // Adicione um evento de toque para dispositivos móveis
 document.addEventListener('touchstart', jump);
+
+// Adicione um evento de tecla para a tecla de espaço
+document.addEventListener('keydown', (event) => {
+    if (event.code === 'Space') {
+        jump();
+    }
+});
