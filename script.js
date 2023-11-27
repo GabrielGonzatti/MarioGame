@@ -1,5 +1,5 @@
 const mario = document.querySelector('.mario');
-const pipe = document.querySelector('.pipe')
+const pipe = document.querySelector('.pipe');
 
 const jump = () => {
     mario.classList.add('jump');
@@ -8,12 +8,11 @@ const jump = () => {
     }, 500);
 }
 
-const loop = setInterval(()=> {
+const loop = setInterval(() => {
+    const pipePosition = pipe.offsetLeft;
+    const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
 
-    const pipePosition =  pipe.offsetLeft;
-    const marioPosition = +window.getComputedStyle(mario).bottom.replace('px','');
-    //console.log(pipePosition) verificação
-    if(pipePosition <= 78 && pipePosition > 0 && marioPosition < 80){
+    if (pipePosition <= 78 && pipePosition > 0 && marioPosition < 80) {
         pipe.style.animation = 'none';
         pipe.style.left = `${pipePosition}px`;
 
@@ -21,8 +20,8 @@ const loop = setInterval(()=> {
         mario.style.bottom = `${marioPosition}px`
 
         mario.src = './imagens/game-over.png';
-        mario.style.widht = '60px';
-        mario.marginleft = '50px';
+        mario.style.width = '60px'; // Correção: era 'widht'
+        mario.style.marginLeft = '50px'; // Correção: era 'marginleft'
         
         clearInterval(loop);
 
@@ -32,5 +31,8 @@ const loop = setInterval(()=> {
 
 }, 10);
 
-document.addEventListener('keydown', jump);
+// Adicione um evento de clique para dispositivos móveis
+document.addEventListener('click', jump);
 
+// Adicione um evento de toque para dispositivos móveis
+document.addEventListener('touchstart', jump);
