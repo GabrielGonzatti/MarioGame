@@ -1,6 +1,19 @@
 const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe');
 
+// Adicione um evento de clique para dispositivos móveis
+document.addEventListener('click', jump);
+
+// Adicione um evento de toque para dispositivos móveis
+document.addEventListener('touchstart', jump);
+
+// Adicione um evento de tecla para a tecla de espaço
+document.addEventListener('keydown', (event) => {
+    if (event.code === 'Space') {
+        jump();
+    }
+});
+
 const jump = () => {
     mario.classList.add('jump');
     setTimeout(() => {
@@ -31,15 +44,3 @@ const loop = setInterval(() => {
 
 }, 10);
 
-// Adicione um evento de clique para dispositivos móveis
-document.addEventListener('click', jump);
-
-// Adicione um evento de toque para dispositivos móveis
-document.addEventListener('touchstart', jump);
-
-// Adicione um evento de tecla para a tecla de espaço
-document.addEventListener('keydown', (event) => {
-    if (event.code === 'Space') {
-        jump();
-    }
-});
